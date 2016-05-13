@@ -38,8 +38,6 @@ public class ActivityRegistration extends AppCompatActivity {
     }
 
     public void textViewSignInToActivitySignIn(View view){
-        Intent intent = new Intent(this, ActivityLogin.class);
-        startActivity(intent);
         finish();
     }
 

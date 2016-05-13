@@ -21,7 +21,7 @@ public class ActivityActivation extends AppCompatActivity {
 
         // Set Action Bar
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("Pos Indonesia");
+        actionBar.setTitle("Account Activation");
         actionBar.setDisplayHomeAsUpEnabled(true);
 
         // Get Layout
@@ -42,6 +42,7 @@ public class ActivityActivation extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ActivityActivation.this, ActivityMain.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
                 finish();
             }
@@ -50,6 +51,7 @@ public class ActivityActivation extends AppCompatActivity {
 
     public void textViewSignInToActivitySignIn(View view){
         Intent intent = new Intent(this, ActivityLogin.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();
     }

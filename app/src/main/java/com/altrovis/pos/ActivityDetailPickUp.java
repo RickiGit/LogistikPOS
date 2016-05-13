@@ -23,6 +23,7 @@ import java.util.Locale;
 public class ActivityDetailPickUp extends AppCompatActivity {
 
     EditText editTextFrom;
+    EditText editTextTo;
     Button buttonEstimate;
 
     @Override
@@ -44,7 +45,12 @@ public class ActivityDetailPickUp extends AppCompatActivity {
 
     public void inisialisasiLayout(){
         editTextFrom = (EditText)findViewById(R.id.EditTextFrom);
+        editTextTo = (EditText)findViewById(R.id.EditTextTo);
         buttonEstimate = (Button)findViewById(R.id.ButtonEstimate);
+
+        Bundle b = getIntent().getExtras();
+        editTextFrom.setText(b.getString("from"));
+        editTextTo.setText(b.getString("to"));
     }
 
     public void setButtonEstimateToMain()
@@ -53,6 +59,7 @@ public class ActivityDetailPickUp extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ActivityDetailPickUp.this, ActivityMain.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
                 finish();
             }

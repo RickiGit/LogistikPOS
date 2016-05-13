@@ -77,12 +77,9 @@ public class FragmentLogistic extends Fragment {
         editTextToLocation = (EditText)view.findViewById(R.id.EditTextToLocation);
         editTextFromLocation = (EditText)view.findViewById(R.id.EditTextFromLocation);
         textViewNamePlace = (TextView)view.findViewById(R.id.TextViewNamePlace);
-        //progressBarNamePlace = (ProgressBar) view.findViewById(R.id.ProgressBarNamePlace);
-        //linearLayoutNamePlace = (LinearLayout) view.findViewById(R.id.LinearLayoutNamePlace);
         final ScrollView scroll = (ScrollView) view.findViewById(R.id.ScrollViewLogistic);
 
         // Set Visible Gone
-        //linearLayoutNamePlace.setVisibility(View.GONE);
         textViewNamePlace.setVisibility(View.GONE);
 
         // Set Default Google Map
@@ -199,6 +196,11 @@ public class FragmentLogistic extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), ActivityDetailPickUp.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("from", editTextFromLocation.getText().toString());
+                bundle.putString("to", editTextToLocation.getText().toString());
+                intent.putExtras(bundle);
+
                 startActivity(intent);
             }
         });
