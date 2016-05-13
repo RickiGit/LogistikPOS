@@ -119,75 +119,75 @@ public class FragmentLogistic extends Fragment {
                     LatLng locationMe = new LatLng(latitude, longitude);
                     CameraPosition cameraPosition = new CameraPosition.Builder().target(locationMe).zoom(16).build();
                     googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+
+                    googleMap.setOnCameraChangeListener(new GoogleMap.OnCameraChangeListener() {
+                        @Override
+                        public void onCameraChange(CameraPosition cameraPosition) {
+
+                            final Handler handlerGetLocation = new Handler();
+                            final Runnable updateLocation = new Runnable() {
+                                public void run() {
+
+                                    LatLng lokasiCamera = googleMap.getCameraPosition().target;
+                                    double latitude = lokasiCamera.latitude;
+                                    double longitude = lokasiCamera.longitude;
+
+                                    Geocoder geocoder;
+                                    List<Address> addresses;
+                                    geocoder = new Geocoder(getActivity(), Locale.getDefault());
+
+                                    try {
+                                        addresses = geocoder.getFromLocation(latitude, longitude, 1);
+                                        final String address = addresses.get(0).getAddressLine(0);
+                                        final String city = addresses.get(0).getLocality();
+                                        String state = addresses.get(0).getAdminArea();
+                                        final String country = addresses.get(0).getCountryName();
+                                        final String postalCode = addresses.get(0).getPostalCode();
+                                        String knownName = addresses.get(0).getFeatureName();
+
+                                        // Set Location Destination to EditText
+                                        final Handler handler = new Handler();
+
+                                        final Runnable updateEditTextDestination = new Runnable() {
+                                            public void run() {
+                                                textViewNamePlace.setVisibility(View.VISIBLE);
+                                                textViewNamePlace.setText(postalCode + ", " + city + ", " + country);
+
+                                                textViewNamePlace.setOnClickListener(new View.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(View v) {
+                                                        editTextToLocation.setText(postalCode + ", " + city + ", " + country);
+                                                    }
+                                                });
+                                            }
+                                        };
+
+                                        Timer timer = new Timer();
+                                        timer.schedule(new TimerTask() {
+                                            @Override
+                                            public void run() {
+                                                handler.post(updateEditTextDestination);
+                                            }
+                                        }, 2000);
+
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            };
+
+                            Timer timerGetLocation = new Timer();
+                            timerGetLocation.schedule(new TimerTask() {
+                                @Override
+                                public void run() {
+                                    handlerGetLocation.post(updateLocation);
+                                }
+                            }, 1000);
+                        }
+                    });
                 } else if (myLocation == null) {
                     Toast.makeText(view.getContext(), "Posisi anda tidak ditemukan", Toast.LENGTH_SHORT).show();
                 }
-
-                googleMap.setOnCameraChangeListener(new GoogleMap.OnCameraChangeListener() {
-                    @Override
-                    public void onCameraChange(CameraPosition cameraPosition) {
-
-                        final Handler handlerGetLocation = new Handler();
-                        final Runnable updateLocation = new Runnable() {
-                            public void run() {
-
-                                LatLng lokasiCamera = googleMap.getCameraPosition().target;
-                                double latitude = lokasiCamera.latitude;
-                                double longitude = lokasiCamera.longitude;
-
-                                Geocoder geocoder;
-                                List<Address> addresses;
-                                geocoder = new Geocoder(getActivity(), Locale.getDefault());
-
-                                try {
-                                    addresses = geocoder.getFromLocation(latitude, longitude, 1);
-                                    final String address = addresses.get(0).getAddressLine(0);
-                                    final String city = addresses.get(0).getLocality();
-                                    String state = addresses.get(0).getAdminArea();
-                                    final String country = addresses.get(0).getCountryName();
-                                    final String postalCode = addresses.get(0).getPostalCode();
-                                    String knownName = addresses.get(0).getFeatureName();
-
-                                    // Set Location Destination to EditText
-                                    final Handler handler = new Handler();
-
-                                    final Runnable updateEditTextDestination = new Runnable() {
-                                        public void run() {
-                                            textViewNamePlace.setVisibility(View.VISIBLE);
-                                            textViewNamePlace.setText(postalCode + ", " + city + ", " + country);
-
-                                            textViewNamePlace.setOnClickListener(new View.OnClickListener() {
-                                                @Override
-                                                public void onClick(View v) {
-                                                    editTextToLocation.setText(postalCode + ", " + city + ", " + country);
-                                                }
-                                            });
-                                        }
-                                    };
-
-                                    Timer timer = new Timer();
-                                    timer.schedule(new TimerTask() {
-                                        @Override
-                                        public void run() {
-                                            handler.post(updateEditTextDestination);
-                                        }
-                                    }, 2000);
-
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                }
-                            }
-                        };
-
-                        Timer timerGetLocation = new Timer();
-                        timerGetLocation.schedule(new TimerTask() {
-                            @Override
-                            public void run() {
-                                handlerGetLocation.post(updateLocation);
-                            }
-                        }, 1000);
-                    }
-                });
             }
         }
         catch (Exception e) {
