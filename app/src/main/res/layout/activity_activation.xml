@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:theme="@style/AppThemeForm"
+    tools:context="com.altrovis.pos.ActivityActivation">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_margin="25dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="We have sent you an SMS to"
+                android:textSize="15dp"
+                android:layout_marginBottom="5dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="the number above"
+                android:textSize="15dp"
+                android:layout_marginBottom="25dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="To complete your phone number verification please enter 6 digit activation code"
+                android:textSize="15dp"
+                android:layout_marginBottom="25dp"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:layout_marginBottom="15dp">
+                <EditText
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:singleLine="true"
+                    android:inputType="number"/>
+                <EditText
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:singleLine="true"
+                    android:inputType="number"/>
+                <EditText
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:singleLine="true"
+                    android:inputType="number"
+                    android:layout_marginRight="15dp"/>
+                <EditText
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:singleLine="true"
+                    android:inputType="number"/>
+                <EditText
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:singleLine="true"
+                    android:inputType="number"/>
+                <EditText
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:singleLine="true"
+                    android:inputType="number"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:layout_marginBottom="20dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Having Trouble ? "/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:text="Call Me"
+                    android:textColor="#FC6B03"/>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/ButtonEnter"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="@drawable/custom_button_form"
+                android:text="Enter"
+                android:textColor="#FFFFFF"/>
+        </LinearLayout>
+    </ScrollView>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_alignParentBottom="true"
+        android:background="#FFFFFF">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="Already have an account ?"
+                android:layout_marginRight="4dp"/>
+            <TextView
+                android:id="@+id/TextViewSignIn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="SIGN IN"
+                android:onClick="textViewSignInToActivitySignIn"
+                android:textColor="#FC6B03"/>
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

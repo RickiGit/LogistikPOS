@@ -1,0 +1,81 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.altrovis.pos.FragmentLogistic"
+    android:theme="@style/AppThemeForm">
+
+    <ScrollView
+        android:id="@+id/ScrollViewLogistic"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="15dp">
+            <EditText
+                android:id="@+id/EditTextFromLocation"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginBottom="0dp"
+                android:hint="From Location, POS Code, City"/>
+
+            <EditText
+                android:id="@+id/EditTextToLocation"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginBottom="10dp"
+                android:hint="To Location, POS Code, City"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:layout_marginBottom="20dp">
+                <fragment
+                    android:id="@+id/Map"
+                    android:name="com.google.android.gms.maps.SupportMapFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="20dp"
+                    class="com.altrovis.pos.Bussines.HandleMapsTouch"/>
+                <TextView
+                    android:id="@+id/TextViewNamePlace"
+                    android:layout_width="wrap_content"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="Test"
+                    android:textAlignment="center"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/custom_button"
+                    android:padding="10dp"/>
+                <ImageView
+                    android:id="@+id/ImageViewMarker"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/marker"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginBottom="5dp"/>
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/ButtonOrder"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="@drawable/custom_button_form"
+                android:text="ORDER"
+                android:textColor="#FFFFFF"
+                android:layout_marginBottom="10dp"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:src="@drawable/blog_besar"
+                android:layout_marginBottom="40dp"/>
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>
